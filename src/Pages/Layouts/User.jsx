@@ -1,13 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Header from '../Shared/Header/Header';
 
-const Root = () => {
+const User = () => {
     return (
         <div>
             <Header />
-            <p>Main layout</p>
+            <Outlet />
         </div>
     );
 };
 
-export default Root;
+export default User;

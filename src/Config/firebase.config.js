@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: import.meta.VITE_RECAT_APP_IapiKey,
-    authDomain: import.meta.VITE_RECAT_APP_IauthDomain,
-    projectId: import.meta.VITE_RECAT_APP_IprojectId,
-    storageBucket: import.meta.VITE_RECAT_APP_IstorageBucket,
-    messagingSenderId: import.meta.VITE_RECAT_APP_ImessagingSenderId,
-    appId: import.meta.VITE_RECAT_APP_IappId,
+    apiKey: import.meta.env.VITE_RECAT_APP_IapiKey,
+    authDomain: import.meta.env.VITE_RECAT_APP_IauthDomain,
+    projectId: import.meta.env.VITE_RECAT_APP_IprojectId,
+    storageBucket: import.meta.env.VITE_RECAT_APP_IstorageBucket,
+    messagingSenderId: import.meta.env.VITE_RECAT_APP_ImessagingSenderId,
+    appId: import.meta.env.VITE_RECAT_APP_IappId,
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
