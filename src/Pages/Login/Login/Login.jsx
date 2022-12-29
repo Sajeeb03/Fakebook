@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -9,12 +9,14 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { loginUser, googleSignIn } = useContext(AuthContext);
     const [generalError, setGeneralError] = useState("");
+    const navigate = useNavigate();
     const handleRegister = async (data) => {
         // console.log(data)
         try {
             const res = await loginUser(data.email, data.password); 
             setGeneralError("");
             toast.success("Login Successful")
+            navigate("/")
         } catch (error) {
             setGeneralError(error.message)
         }
@@ -34,6 +36,7 @@ const Login = () => {
             const result = await axios.put(`https://fakebook-server.vercel.app/users?email=${data.email}`, user)
             if (result.data.success) {
                 toast.success("Login Successful")
+                navigate("/")
             }
         } catch (error) {
             setGeneralError(error.message)

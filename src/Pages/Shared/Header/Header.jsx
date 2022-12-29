@@ -13,7 +13,9 @@ const Header = () => {
         <div className="navbar bg-secondary h-12">
             <div className="navbar-start">
 
-                <img src={logo} alt="" className='w-44' />
+                <Link to={`/`}>
+                    <img src={logo} alt="" className='w-44' />
+                </Link>
 
             </div>
             <div className='navbar-center mr-16'>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -9,6 +9,7 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerUser, updateName } = useContext(AuthContext);
     const [generalError, setGeneralError] = useState("");
+    const navigate = useNavigate();
     const handleRegister = async (data) => {
         // console.log(data)
         try {
@@ -25,6 +26,7 @@ const Register = () => {
                     if (res.data.success) {
                         toast.success("Login Successful");
                         setGeneralError("")
+                        navigate('/')
                     }
                 })
                 .catch(err => console.log(err.message))
