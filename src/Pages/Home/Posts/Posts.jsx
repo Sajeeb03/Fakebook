@@ -7,9 +7,11 @@ import Post from '../../Media/Post';
 
 const Posts = () => {
     const { user, loading, setLoading } = useContext(AuthContext);
+    if (loading) {
+        return <Loader />
+    }
 
-
-    const uid = { uid: user.uid };
+    const uid = { uid: user?.uid };
     // console.log(uid)
     const handleReaction = async (sta) => {
         // console.log(sta)
@@ -39,7 +41,7 @@ const Posts = () => {
         }
     });
 
-    if (isLoading || loading) {
+    if (isLoading) {
         return <Loader />
     }
     return (

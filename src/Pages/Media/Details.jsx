@@ -9,6 +9,10 @@ import { AuthContext } from '../../Context/AuthProvider';
 const Details = () => {
     const { id } = useParams();
     const { user, loading, setLoading } = useContext(AuthContext);
+
+    if (loading) {
+        return <Loader />
+    }
     const { data: post = [], isLoading, refetch } = useQuery({
         queryKey: ["details"],
         queryFn: async () => {
@@ -32,7 +36,7 @@ const Details = () => {
 
         }
     }
-    if (isLoading || loading) {
+    if (isLoading) {
         return <Loader />
     }
     return (
