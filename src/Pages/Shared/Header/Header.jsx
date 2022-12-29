@@ -16,11 +16,12 @@ const Header = () => {
                 <img src={logo} alt="" className='w-44' />
 
             </div>
-            <div className='navbar-center'>
-                <ul className='flex gap-3 text-white'>
+            <div className='navbar-center mr-16'>
+                <ul className='flex gap-12 text-white'>
                     <Link to="/"><li>Home</li></Link>
                     <Link to="/media"><li>Media</li></Link>
                     <Link to="/about"><li>About</li></Link>
+                    <Link to="/message"><li>Messages</li></Link>
 
                     {
                         user?.uid ? <li onClick={handleSignOut}>Sign Out</li> : <Link to="/user/login"><li>Sign In</li></Link>
@@ -28,7 +29,7 @@ const Header = () => {
 
                 </ul>
             </div>
-            <div className="flex-none gap-2 navbar-end">
+            {/* <div className="flex-none gap-2 navbar-end">
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
@@ -46,7 +47,7 @@ const Header = () => {
                         <li><a>Logout</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

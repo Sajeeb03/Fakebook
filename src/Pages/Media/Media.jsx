@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
+import Loader from '../../Components/Loader';
 import { AuthContext } from '../../Context/AuthProvider';
 import Post from './Post';
 
@@ -8,7 +9,7 @@ const Media = () => {
     const { user, loading, setLoading } = useContext(AuthContext);
 
     if (loading) {
-        return <p>Loading</p>
+        return <Loader />
     }
     const { data: status = [], isLoading, refetch } = useQuery({
         queryKey: ["status"],
@@ -37,10 +38,9 @@ const Media = () => {
         }
     }
 
+
     if (isLoading) {
-        return <p>
-            Loading
-        </p>
+        return <Loader />
     }
     return (
         <div className='p-12 grid grid-cols-1 gap-4'>

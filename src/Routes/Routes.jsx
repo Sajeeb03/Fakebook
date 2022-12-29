@@ -5,7 +5,9 @@ import Root from "../Pages/Layouts/Root";
 import User from "../Pages/Layouts/User";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
+import Details from "../Pages/Media/Details";
 import Media from "../Pages/Media/Media";
+import Message from "../Pages/Message/Message";
 import ErrorPage from "../Pages/Shared/Error/ErrorPage";
 
 const router = createBrowserRouter([
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
             {
                 path: "/media",
                 element: <Media />
+            },
+            {
+                path: "/message",
+                element: <Message />
+            },
+            {
+                path: "/post/:id",
+                element: <Details />
             }
         ]
     },
