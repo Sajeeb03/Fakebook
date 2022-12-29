@@ -12,7 +12,7 @@ const Details = () => {
     const { data: post = [], isLoading, refetch } = useQuery({
         queryKey: ["details"],
         queryFn: async () => {
-            const res = await axios(`http://localhost:5000/post/${id}`)
+            const res = await axios(`https://fakebook-server.vercel.app/post/${id}`)
             return res.data.data;
         }
     });
@@ -22,7 +22,7 @@ const Details = () => {
     const uid = { uid: user.uid };
     const handleReaction = async (post) => {
         // console.log(sta)
-        const res = await axios.put(`http://localhost:5000/posts/${post._id}`, uid)
+        const res = await axios.put(`https://fakebook-server.vercel.app/posts/${post._id}`, uid)
         try {
             if (res.data.success) {
                 // console.log("hello")

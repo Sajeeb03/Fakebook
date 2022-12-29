@@ -15,7 +15,7 @@ const Media = () => {
         queryKey: ["status"],
         queryFn: async () => {
             try {
-                const res = await axios("http://localhost:5000/posts");
+                const res = await axios("https://fakebook-server.vercel.app/posts");
                 // console.log(res.data)
                 return res.data.data;
             } catch (error) {
@@ -27,7 +27,7 @@ const Media = () => {
     // console.log(uid)
     const handleReaction = async (sta) => {
         // console.log(sta)
-        const res = await axios.put(`http://localhost:5000/posts/${sta._id}`, uid)
+        const res = await axios.put(`https://fakebook-server.vercel.app/posts/${sta._id}`, uid)
         try {
             if (res.data.success) {
                 // console.log("hello")

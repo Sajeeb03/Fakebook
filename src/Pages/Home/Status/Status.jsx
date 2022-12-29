@@ -33,7 +33,7 @@ const Status = () => {
                         comment: []
                     }
 
-                    axios.post("http://localhost:5000/posts", status)
+                    axios.post("https://fakebook-server.vercel.app/posts", status)
                         .then(res => {
                             if (res.data.success) {
                                 toast.success("Post uploaded")

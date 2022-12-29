@@ -20,7 +20,7 @@ const Register = () => {
                 email: data.email
             }
 
-            axios.put(`http://localhost:5000/users?email:${data.email}`, user)
+            axios.put(`https://fakebook-server.vercel.app/users?email:${data.email}`, user)
                 .then(res => {
                     if (res.data.success) {
                         toast.success("Login Successful");

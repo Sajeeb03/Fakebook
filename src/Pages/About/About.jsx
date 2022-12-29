@@ -7,7 +7,7 @@ const About = () => {
     const { data: sajeeb = [], isLoading } = useQuery({
         queryKey: ["about"],
         queryFn: async () => {
-            const res = await axios('http://localhost:5000/about');
+            const res = await axios('https://fakebook-server.vercel.app/about');
             return res.data.data;
         }
     })

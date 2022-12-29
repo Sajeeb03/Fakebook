@@ -31,7 +31,7 @@ const Login = () => {
                 email: data.email
             }
             setGeneralError('');
-            const result = await axios.put(`http://localhost:5000/users?email=${data.email}`, user)
+            const result = await axios.put(`https://fakebook-server.vercel.app/users?email=${data.email}`, user)
             if (result.data.success) {
                 toast.success("Login Successful")
             }
