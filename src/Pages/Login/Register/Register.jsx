@@ -1,16 +1,36 @@
-import React, { useContext } from 'react';
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerUser, updateName } = useContext(AuthContext);
+    const [generalError, setGeneralError] = useState("");
     const handleRegister = async (data) => {
         // console.log(data)
+        try {
         const res = await registerUser(data.email, data.password);
         const name = await updateName(data.name)
         // console.log(res.user)
+            const user = {
+                name: data.name,
+                email: data.email
+            }
+
+            axios.put(`http://localhost:5000/users?email:${data.email}`, user)
+                .then(res => {
+                    if (res.data.success) {
+                        toast.success("Login Successful");
+                        setGeneralError("")
+                    }
+                })
+                .catch(err => console.log(err.message))
+        } catch (error) {
+            setGeneralError(error.message)
+        }
     }
     return (
         <div className='h-screen grid place-items-center'>
@@ -35,7 +55,7 @@ const Register = () => {
                         placeholder="Type here"
                         className="input input-bordered w-full"
                         {...register("email", {
-                            required: "Hello",
+                            required: "email is required",
                             pattern:
                             {
                                 value: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
@@ -66,6 +86,9 @@ const Register = () => {
                     }
                     <button type="submit" className='btn btn-accent w-full mt-3'>Register</button>
                 </form>
+                {
+                    generalError && <span className='text-error mt-2'>{generalError}</span>
+                }
                 <p className='text-white text-center mt-2'>Already have an account? <Link className='text-blue-500' to="/user/login">Login Now</Link></p>
             </div>
         </div>

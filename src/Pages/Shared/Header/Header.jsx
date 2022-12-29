@@ -10,7 +10,7 @@ const Header = () => {
         navigate("/user/login")
     }
     return (
-        <div className="navbar bg-secondary shadow-lg h-12">
+        <div className="navbar bg-secondary h-12">
             <div className="navbar-start">
 
                 <img src={logo} alt="" className='w-44' />
@@ -19,6 +19,9 @@ const Header = () => {
             <div className='navbar-center'>
                 <ul className='flex gap-3 text-white'>
                     <Link to="/"><li>Home</li></Link>
+                    <Link to="/media"><li>Media</li></Link>
+                    <Link to="/about"><li>About</li></Link>
+
                     {
                         user?.uid ? <li onClick={handleSignOut}>Sign Out</li> : <Link to="/user/login"><li>Sign In</li></Link>
                     }
